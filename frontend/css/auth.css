@@ -1,0 +1,80 @@
+/* PowerPulse sign-in / registration pages - same identity as the landing page. */
+body.auth { min-height: 100vh; background: var(--navy-950); color: #fff; overflow-x: hidden; }
+.auth-bg { position: fixed; inset: 0; pointer-events: none; background: linear-gradient(180deg, var(--navy-950), var(--navy-900)); }
+.glow { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .5; }
+.g1 { width: 560px; height: 560px; left: -180px; top: -200px; background: radial-gradient(closest-side, rgba(37, 99, 235, .7), transparent); }
+.g2 { width: 620px; height: 620px; right: -220px; bottom: -200px; background: radial-gradient(closest-side, rgba(8, 145, 178, .5), transparent); }
+.grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 30% 40%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 30%, transparent 75%); }
+.wave { position: absolute; left: 0; right: 0; bottom: 60px; width: 100%; height: 200px; opacity: .45; }
+.wave-pulse { fill: none; stroke: var(--cyan-400); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-dasharray: 260 2400; stroke-dashoffset: 2660; filter: drop-shadow(0 0 6px rgba(34, 211, 238, .8)); animation: pulse-run 5.5s linear infinite; }
+@keyframes pulse-run { to { stroke-dashoffset: 0; } }
+
+.auth-wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); min-height: 100vh; }
+.auth-side { display: flex; flex-direction: column; padding: 40px 56px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; }
+.side-copy { margin: auto 0; max-width: 480px; animation: rise .7s var(--ease) both; }
+.side-copy h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; }
+.side-copy p { color: #b6c2d6; font-size: 16px; line-height: 1.6; margin-top: 16px; }
+.side-copy ul { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
+.side-copy li { display: flex; align-items: center; gap: 12px; color: #d3dcea; font-size: 14.5px; }
+.side-copy li svg.i { width: 18px; height: 18px; color: var(--cyan-400); }
+.side-foot { color: #64748b; font-size: 12.5px; }
+
+.auth-main { display: flex; flex-direction: column; justify-content: center; padding: 40px 48px; }
+.mobile-brand { display: none; margin-bottom: 24px; }
+.auth-card {
+  background: var(--surface); color: var(--ink); border-radius: 22px; padding: 36px; box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+  animation: rise .6s var(--ease) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.auth-card h1 { font-size: 26px; font-weight: 800; }
+.auth-card .sub { color: var(--ink-2); margin: 6px 0 24px; font-size: 14.5px; }
+.auth-card form { display: grid; gap: 16px; }
+.fld { display: grid; gap: 6px; }
+.fld label { font-size: 13px; font-weight: 600; color: var(--ink-2); display: flex; justify-content: space-between; align-items: center; }
+.fld label a { font-weight: 600; font-size: 12.5px; }
+.inp { position: relative; }
+.inp input {
+  width: 100%; height: 46px; border: 1.5px solid var(--border); border-radius: 12px; padding: 0 14px; font: inherit; font-size: 15px; color: var(--ink); background: var(--surface);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.inp input:focus { outline: none; border-color: var(--primary); box-shadow: var(--ring); }
+.inp input[aria-invalid="true"] { border-color: var(--red); }
+.inp input.has-toggle { padding-right: 48px; }
+.eye { position: absolute; right: 6px; top: 6px; width: 34px; height: 34px; border: 0; background: transparent; color: var(--muted); border-radius: 8px; cursor: pointer; display: grid; place-items: center; }
+.eye:hover { color: var(--ink); background: var(--surface-3); }
+.eye svg.i { width: 18px; height: 18px; }
+.err { color: var(--red-700); font-size: 12.5px; min-height: 0; }
+.err:empty { display: none; }
+.hint { color: var(--muted); font-size: 12.5px; }
+.strength { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 2px; }
+.strength span { height: 4px; border-radius: 2px; background: var(--surface-3); transition: background var(--t); }
+.strength[data-score="1"] span:nth-child(-n+1) { background: var(--red); }
+.strength[data-score="2"] span:nth-child(-n+2) { background: var(--amber); }
+.strength[data-score="3"] span:nth-child(-n+3) { background: var(--emerald); }
+.strength[data-score="4"] span { background: var(--emerald); }
+.check { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); cursor: pointer; }
+.check input { width: 16px; height: 16px; accent-color: var(--primary); }
+.auth-card .btn.lg { width: 100%; }
+.alert-box { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; font-size: 13.5px; }
+.alert-box svg.i { width: 18px; height: 18px; flex: none; margin-top: 1px; }
+.alert-box.error { background: var(--red-50); color: var(--red-700); border: 1px solid #fecaca; }
+.alert-box.success { background: var(--emerald-50); color: var(--emerald-700); border: 1px solid #a7f3d0; }
+.alert-box.info { background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-100); }
+.alt { text-align: center; color: var(--ink-2); font-size: 14px; margin-top: 20px; }
+.alt a { font-weight: 600; }
+.btn .spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .4); border-top-color: #fff; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.auth-legal { color: #8a9ab3; font-size: 12.5px; text-align: center; margin-top: 18px; }
+.auth-legal a { color: #c7d2e3; }
+.skip { position: absolute; left: 12px; top: -48px; }
+
+@media (max-width: 960px) {
+  .auth-wrap { grid-template-columns: minmax(0, 1fr); }
+  .auth-side { display: none; }
+  .mobile-brand { display: inline-flex; align-self: center; }
+  .auth-main { padding: 32px 16px; max-width: 520px; width: 100%; margin: 0 auto; }
+}
+@media (max-width: 420px) { .auth-card { padding: 24px 20px; border-radius: 18px; } .auth-card h1 { font-size: 22px; } }
+@media (prefers-reduced-motion: reduce) { .wave-pulse { display: none; } }
+

@@ -1,0 +1,15 @@
+target-version = "py310"
+line-length = 160
+
+[lint]
+select = ["E", "F", "W", "B", "UP", "SIM", "S"]
+ignore = [
+    "E501",            # long lines are allowed; readability is judged in review
+    "B008",            # FastAPI's dependency-injection idiom: Depends()/Body()/File() as defaults
+    "S311",            # `random` is only used for synthetic demo data, never for secrets
+    "S608",            # SQL strings are built from fixed column names; values are always bound parameters
+    "UP006", "UP007", "UP035", "UP045",  # keep typing style consistent with the existing code
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["S101", "S105", "S106"]  # asserts and fixed test passwords are expected in tests

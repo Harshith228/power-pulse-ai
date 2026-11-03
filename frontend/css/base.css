@@ -1,0 +1,256 @@
+/* PowerPulse design system: tokens, base typography and shared components.
+   Used by both the landing page (index.html) and the dashboard (dashboard.html). */
+:root {
+  /* brand */
+  --navy-950: #060c18;
+  --navy-900: #0a1324;
+  --navy-800: #111d33;
+  --navy-700: #1a2a46;
+  --navy-600: #26385a;
+  --blue: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-50: #eef4ff;
+  --blue-100: #dbe7fe;
+  --cyan: #0891b2;
+  --cyan-400: #22d3ee;
+  --cyan-50: #ecfbfe;
+  --emerald: #059669;
+  --emerald-700: #047857;
+  --emerald-50: #ecfdf5;
+  --amber: #f59e0b;
+  --amber-700: #b45309;
+  --amber-50: #fffbeb;
+  --orange: #ea580c;
+  --red: #dc2626;
+  --red-700: #b91c1c;
+  --red-50: #fef2f2;
+  --violet: #5b4bc4;
+  --violet-50: #f3f1fd;
+
+  /* surfaces & ink */
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #f1f5f9;
+  --border: #e3e8f0;
+  --border-strong: #cbd5e1;
+  --ink: #0f172a;
+  --ink-2: #475569;
+  --muted: #64748b;
+
+  /* semantic */
+  --primary: var(--blue);
+  --primary-ink: var(--blue-700);
+  --primary-soft: var(--blue-50);
+  --good: var(--emerald);
+  --good-ink: var(--emerald-700);
+  --warning: var(--amber);
+  --serious: var(--orange);
+  --critical: var(--red);
+  --low: var(--blue);
+
+  /* type */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+  --fs-xs: 11.5px;
+  --fs-sm: 12.5px;
+  --fs-base: 14px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+
+  /* shape & depth */
+  --r-sm: 8px;
+  --r: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, .05);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 6px rgba(15, 23, 42, .05);
+  --shadow-md: 0 4px 10px rgba(15, 23, 42, .06), 0 12px 28px rgba(15, 23, 42, .08);
+  --shadow-lg: 0 20px 50px rgba(15, 23, 42, .16);
+  --ring: 0 0 0 3px rgba(37, 99, 235, .28);
+
+  /* motion */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --t-fast: .15s;
+  --t: .25s;
+  --t-slow: .45s;
+
+  /* tinted borders / text used by status boxes */
+  --red-200: #fecaca;
+  --amber-200: #fde68a;
+  --emerald-200: #a7f3d0;
+  --green-200: #c6ecdc;
+  --violet-200: #ddd8f7;
+  --amber-text: #92400e;
+  --violet-text: #3b2f8f;
+  --tint-good: #f6fffb;
+  --tint-primary: rgba(37, 99, 235, .05);
+  --red-ring: rgba(220, 38, 38, .06);
+  --topbar-bg: rgba(245, 247, 251, .82);
+  --overlay-bg: rgba(245, 247, 251, .66);
+  --skel-hi: #e9eef5;
+  --toast-error: #7f1d1d;
+  color-scheme: light;
+}
+
+/* Dark theme: its own palette (not an inversion). Surfaces step up in lightness, text is off-white,
+   tints become translucent so status colours keep their meaning on dark cards. The resolved theme is set on
+   <html data-theme> by an inline script before first paint (no flash). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1120;
+  --surface: #111b2e;
+  --surface-2: #15213a;
+  --surface-3: #1c2a45;
+  --border: #24324d;
+  --border-strong: #354666;
+  --ink: #e8eef8;
+  --ink-2: #b2bfd4;
+  --muted: #8e9db6;
+
+  --blue: #3b82f6;
+  --blue-700: #2563eb;
+  --blue-50: rgba(59, 130, 246, .15);
+  --blue-100: rgba(59, 130, 246, .32);
+  --cyan: #22d3ee;
+  --cyan-50: rgba(34, 211, 238, .13);
+  --emerald: #10b981;
+  --emerald-700: #6ee7b7;
+  --emerald-50: rgba(16, 185, 129, .14);
+  --amber: #f59e0b;
+  --amber-700: #fbbf24;
+  --amber-50: rgba(245, 158, 11, .14);
+  --orange: #fb923c;
+  --red: #ef4444;
+  --red-700: #fca5a5;
+  --red-50: rgba(239, 68, 68, .15);
+  --violet: #a78bfa;
+  --violet-50: rgba(139, 92, 246, .16);
+
+  --primary: #3b82f6;
+  --primary-ink: #93c5fd;
+  --primary-soft: rgba(59, 130, 246, .15);
+  --good-ink: #6ee7b7;
+  --serious: #fb923c;
+  --critical: #f87171;
+  --low: #60a5fa;
+
+  --red-200: rgba(248, 113, 113, .38);
+  --amber-200: rgba(251, 191, 36, .35);
+  --emerald-200: rgba(52, 211, 153, .35);
+  --green-200: rgba(52, 211, 153, .3);
+  --violet-200: rgba(167, 139, 250, .35);
+  --amber-text: #fcd34d;
+  --violet-text: #c4b5fd;
+  --tint-good: rgba(16, 185, 129, .08);
+  --tint-primary: rgba(59, 130, 246, .08);
+  --red-ring: rgba(239, 68, 68, .12);
+  --topbar-bg: rgba(10, 17, 32, .82);
+  --overlay-bg: rgba(6, 12, 24, .6);
+  --skel-hi: #22314e;
+  --toast-error: #991b1b;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .3);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px rgba(0, 0, 0, .25);
+  --shadow-md: 0 6px 14px rgba(0, 0, 0, .35), 0 14px 32px rgba(0, 0, 0, .3);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, .55);
+  --ring: 0 0 0 3px rgba(96, 165, 250, .4);
+}
+/* theme switches animate colours briefly, but never on first paint */
+html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .3s ease, border-color .3s ease, color .2s ease !important;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; }
+body { font: var(--fs-base)/1.55 var(--font); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -0.015em; line-height: 1.25; font-family: var(--font-display); }
+p { margin: 0; }
+a { color: var(--primary-ink); text-decoration: none; cursor: pointer; }
+button { font: inherit; color: inherit; }
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+.num, td.n, .tabular { font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+::selection { background: var(--blue-100); }
+
+/* Lucide-style stroke icons */
+svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- logo ---------- */
+.logo-mark { width: 34px; height: 34px; flex: none; display: block; }
+.wordmark { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: inherit; }
+.wordmark span { color: var(--cyan-400); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 38px; padding: 0 14px;
+  border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+  font-weight: 600; font-size: 13.5px; white-space: nowrap; cursor: pointer; position: relative;
+  transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast), color var(--t-fast);
+}
+.btn svg.i { width: 17px; height: 17px; }
+.btn:hover { border-color: var(--border-strong); background: var(--surface-2); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 1px 2px rgba(37, 99, 235, .3), inset 0 1px 0 rgba(255, 255, 255, .12); }
+.btn.primary:hover { background: var(--primary-ink); border-color: var(--primary-ink); box-shadow: 0 6px 16px rgba(37, 99, 235, .3); }
+.btn.dark { background: var(--navy-900); border-color: var(--navy-900); color: #fff; }
+.btn.dark:hover { background: var(--navy-700); }
+.btn.ghost { border-color: transparent; background: transparent; }
+.btn.ghost:hover { background: var(--surface-3); }
+.btn.sm { height: 32px; padding: 0 10px; font-size: 12.5px; border-radius: 9px; }
+.btn.lg { height: 48px; padding: 0 22px; font-size: 15px; border-radius: 12px; }
+.icon-btn {
+  width: 38px; height: 38px; display: inline-grid; place-items: center; border-radius: 10px; flex: none;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-2); cursor: pointer; position: relative;
+  transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+.icon-btn svg.i { width: 18px; height: 18px; }
+.icon-btn:hover { color: var(--ink); background: var(--surface-2); border-color: var(--border-strong); }
+
+/* ---------- tags & severity ---------- */
+.tag {
+  display: inline-flex; align-items: center; gap: 5px; font-size: var(--fs-xs); font-weight: 600; padding: 2px 8px;
+  border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--ink-2); white-space: nowrap;
+}
+.tag svg.i { width: 12px; height: 12px; }
+.tag.injected { color: var(--violet); border-color: var(--violet-200); background: var(--violet-50); }
+.tag.natural { color: var(--emerald-700); border-color: var(--green-200); background: var(--emerald-50); }
+.tag.good { color: var(--emerald-700); border-color: var(--green-200); background: var(--emerald-50); }
+.tag.blue { color: var(--primary-ink); border-color: var(--blue-100); background: var(--blue-50); }
+.tag.demo { color: var(--amber-700); border-color: var(--amber-200); background: var(--amber-50); }
+.sev { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.sev::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--c); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 22%, transparent); }
+.sev.low, .alert.low { --c: var(--low); }
+.sev.medium, .alert.medium { --c: var(--warning); }
+.sev.high, .alert.high { --c: var(--serious); }
+.sev.critical, .alert.critical { --c: var(--critical); }
+
+/* ---------- floating tooltip (one shared element, positioned by ui.js) ---------- */
+.tip {
+  position: fixed; z-index: 90; pointer-events: none; background: var(--navy-900); color: #fff; font-size: 12px; font-weight: 600;
+  padding: 6px 10px; border-radius: 8px; box-shadow: var(--shadow-md); white-space: nowrap; opacity: 0; transform: translateY(2px);
+  transition: opacity var(--t-fast), transform var(--t-fast);
+}
+.tip.show { opacity: 1; transform: none; }
+
+/* ---------- reveal on scroll ---------- */
+.reveal { opacity: 0; }
+.reveal.in { opacity: 1; animation: reveal-in .7s var(--ease) var(--d, 0s) backwards; }
+@keyframes reveal-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---------- reduced motion: respected everywhere ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; }
+}
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+  animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important;
+}
+html.reduce-motion .reveal { opacity: 1; }

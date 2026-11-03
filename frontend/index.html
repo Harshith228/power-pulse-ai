@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PowerPulse · Smart Energy Intelligence Platform</title>
+  <meta name="description" content="PowerPulse turns household electricity data into actionable intelligence: detect abnormal consumption, understand energy patterns and discover opportunities to save.">
+  <meta name="theme-color" content="#0a1324">
+  <meta property="og:title" content="PowerPulse · Smart Energy Intelligence Platform">
+  <meta property="og:description" content="Understand Energy. Detect Anomalies. Power Smarter.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+</head>
+<body class="landing">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#home" aria-label="PowerPulse home"><span data-logo></span><span class="wordmark">Power<span>Pulse</span></span></a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#technology">Technology</a>
+      <a href="#about">About</a>
+      <a class="nav-link-m" href="/login">Sign in</a>
+      <a class="btn primary nav-cta-m" href="/register">Get started</a>
+    </nav>
+    <a class="nav-signin" href="/login">Sign in</a>
+    <a class="btn primary nav-cta" href="/register">Get started <i data-icon="arrowRight"></i></a>
+    <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><i data-icon="menu"></i></button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="glow g1"></div><div class="glow g2"></div><div class="grid-bg"></div>
+      <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="wave-base" d="M0 200 H360 L400 200 L430 120 L470 280 L500 60 L540 240 L570 200 H820 L850 200 L870 160 L895 240 L915 200 H1440"/>
+        <path class="wave-pulse" d="M0 200 H360 L400 200 L430 120 L470 280 L500 60 L540 240 L570 200 H820 L850 200 L870 160 L895 240 L915 200 H1440"/>
+      </svg>
+    </div>
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <span class="eyebrow hero-anim" style="--d:.05s"><span class="live-dot"></span>Smart Energy Intelligence Platform</span>
+        <h1 class="hero-anim" style="--d:.12s">Take Control of Your Energy. <span class="grad">Detect What Others Miss.</span></h1>
+        <p class="lead hero-anim" style="--d:.2s">PowerPulse transforms household electricity data into actionable intelligence. Detect abnormal consumption, understand energy patterns and discover opportunities to save.</p>
+        <div class="hero-ctas hero-anim" style="--d:.28s">
+          <a class="btn primary lg" href="/register" data-cta>Get Started <i data-icon="arrowRight"></i></a>
+          <a class="btn lg ghost-light" href="#features">Explore Features</a>
+        </div>
+        <ul class="hero-points hero-anim" style="--d:.36s">
+          <li><i data-icon="checkCircle"></i>Works on public data &amp; your own CSV</li>
+          <li><i data-icon="checkCircle"></i>Every alert explained</li>
+          <li><i data-icon="checkCircle"></i>No hardware needed</li>
+        </ul>
+        <p class="server-status hero-anim" style="--d:.42s" id="server-status" hidden></p>
+      </div>
+
+      <div class="hero-visual hero-anim" style="--d:.25s">
+        <div class="preview" role="img" aria-label="Illustrative preview of the PowerPulse dashboard: consumption line, expected baseline and flagged anomalies">
+          <div class="pv-body">
+            <div class="pv-side"><span data-logo-sm></span><i></i><i class="on"></i><i></i><i></i><i></i></div>
+            <div class="pv-main">
+              <div class="pv-top"><div><small>Household · Overview</small><b>Good evening, Priya</b></div></div>
+              <div class="pv-kpis">
+                <div><small>Avg daily use</small><b>18.6<em>kWh</em></b></div>
+                <div><small>Anomalies</small><b class="red">24</b></div>
+                <div><small>Monthly bill</small><b>₹3,940</b></div>
+                <div class="dark"><small>Savings</small><b>₹612<em>/mo</em></b></div>
+              </div>
+              <div class="pv-chart">
+                <div class="pv-legend"><span class="l1">Consumption</span><span class="l2">Expected</span><span class="l3">Anomaly</span></div>
+                <svg viewBox="0 0 400 150" preserveAspectRatio="none">
+                  <defs><linearGradient id="pv-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2563eb" stop-opacity=".25"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs>
+                  <g class="pv-grid"><line x1="0" y1="30" x2="400" y2="30"/><line x1="0" y1="70" x2="400" y2="70"/><line x1="0" y1="110" x2="400" y2="110"/></g>
+                  <path class="pv-fill" d="M0 112 L20 104 L40 108 L60 92 L80 98 L100 84 L120 96 L140 88 L160 30 L180 92 L200 86 L220 94 L240 80 L260 90 L280 74 L300 50 L320 46 L340 52 L360 84 L380 90 L400 86 L400 150 L0 150Z"/>
+                  <path class="pv-base" d="M0 108 L40 104 L80 98 L120 94 L160 92 L200 90 L240 86 L280 84 L320 84 L360 86 L400 88"/>
+                  <path class="pv-line" d="M0 112 L20 104 L40 108 L60 92 L80 98 L100 84 L120 96 L140 88 L160 30 L180 92 L200 86 L220 94 L240 80 L260 90 L280 74 L300 50 L320 46 L340 52 L360 84 L380 90 L400 86"/>
+                  <rect class="pv-band" x="292" y="0" width="58" height="150"/>
+                  <circle class="pv-dot" cx="160" cy="30" r="5"/><circle class="pv-dot d2" cx="320" cy="46" r="5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <span class="pv-tag">Illustrative preview</span>
+        </div>
+        <div class="float-card fc1"><span class="fc-ic red"><i data-icon="zap"></i></span><div><b>Sudden spike detected</b><small>Tue 20:00 · 3.4× normal · Geyser</small></div></div>
+        <div class="float-card fc2"><span class="fc-ic green"><i data-icon="leaf"></i></span><div><b>Save ₹612 / month</b><small>Shift water heating off-peak</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats" aria-labelledby="stats-h">
+    <div class="wrap">
+      <h2 class="sr-only" id="stats-h">PowerPulse in numbers</h2>
+      <div class="stats-grid">
+        <div class="stat reveal"><b data-to="2075259">2,075,259</b><span>one-minute readings in the real UCI household dataset</span></div>
+        <div class="stat reveal" style="--d:.08s"><b data-to="4" data-suffix=" years">4 years</b><span>of real consumption analysed (Dec 2006 – Nov 2010)</span></div>
+        <div class="stat reveal" style="--d:.16s"><b data-to="200" data-suffix=" trees">200 trees</b><span>in the Isolation Forest, scoring 8 features every hour</span></div>
+        <div class="stat reveal" style="--d:.24s"><b data-to="100" data-suffix="%">100%</b><span>of injected anomalies found on synthetic validation runs</span></div>
+      </div>
+      <p class="stats-note reveal">Figures from the public UCI dataset and PowerPulse's own validation suite. On noisy real-home data, recall is 67–89%; see the Validation Lab.</p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section" id="features" aria-labelledby="features-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Features</span>
+        <h2 id="features-h">Everything you need to understand a home's energy</h2>
+        <p>From raw meter exports to explained alerts and a costed action plan, in one place.</p>
+      </div>
+      <div class="features">
+        <article class="feature reveal" style="--d:0s"><span class="f-ic blue"><i data-icon="scan"></i></span><h3>Intelligent Anomaly Detection</h3><p>A robust hour-by-hour baseline plus an Isolation Forest flags sudden spikes, sustained increases and repeated unusual loads.</p></article>
+        <article class="feature reveal" style="--d:.06s"><span class="f-ic cyan"><i data-icon="chart"></i></span><h3>Energy Consumption Analytics</h3><p>Daily profiles, weekday vs weekend patterns, a weekly heatmap and always-on base load, all from your own readings.</p></article>
+        <article class="feature reveal" style="--d:.12s"><span class="f-ic violet"><i data-icon="activity"></i></span><h3>Smart Usage Monitoring</h3><p>An alert feed, severity trends and the hours when anomalies strike, with notifications for what matters most.</p></article>
+        <article class="feature reveal" style="--d:.18s"><span class="f-ic amber"><i data-icon="sparkles"></i></span><h3>Explainable Alerts</h3><p>Every alert says why: actual vs expected, z-score, model rarity, the hourly jump and which circuit caused it.</p></article>
+        <article class="feature reveal" style="--d:.24s"><span class="f-ic green"><i data-icon="lightbulb"></i></span><h3>Energy Saving Recommendations</h3><p>Actions matched to the appliance and time of day: geyser timing, AC set-points, pumps and standby loads.</p></article>
+        <article class="feature reveal" style="--d:.3s"><span class="f-ic red"><i data-icon="wallet"></i></span><h3>Cost &amp; Savings Analysis</h3><p>An editable INR slab tariff prices every anomaly, estimates your typical bill and what you could save each month.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section alt" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">How It Works</span>
+        <h2 id="how-h">From a CSV to clear answers in five steps</h2>
+        <p>The whole pipeline runs in seconds on years of hourly data.</p>
+      </div>
+      <ol class="steps reveal" id="steps">
+        <li class="step"><span class="s-num">01</span><span class="s-ic"><i data-icon="cloudUpload"></i></span><h3>Upload Dataset</h3><p>Drop a smart-meter CSV or load the public UCI dataset. Separators, units and timestamps are detected automatically.</p></li>
+        <li class="step"><span class="s-num">02</span><span class="s-ic"><i data-icon="bars"></i></span><h3>Analyse Consumption</h3><p>Readings are cleaned, resampled to hourly and profiled by hour, weekday and weekend.</p></li>
+        <li class="step"><span class="s-num">03</span><span class="s-ic"><i data-icon="scan"></i></span><h3>Detect Anomalies</h3><p>A 28-day robust baseline and an Isolation Forest score every hour; event rules group them into alerts.</p></li>
+        <li class="step"><span class="s-num">04</span><span class="s-ic"><i data-icon="lightbulb"></i></span><h3>Generate Recommendations</h3><p>Each alert is explained and linked to a practical fix for the appliance involved.</p></li>
+        <li class="step"><span class="s-num">05</span><span class="s-ic"><i data-icon="piggy"></i></span><h3>Understand Potential Savings</h3><p>Your tariff turns wasted kWh into rupees per month, so you know which fix pays off first.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TECHNOLOGY ============ -->
+  <section class="section dark" id="technology" aria-labelledby="tech-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Technology</span>
+        <h2 id="tech-h">Software-only. Explainable by design.</h2>
+        <p>No smart plugs, no new hardware: PowerPulse works on the data a meter already produces.</p>
+      </div>
+      <div class="pipeline reveal" aria-label="Detection pipeline">
+        <div class="pipe"><i data-icon="database"></i><b>Meter data</b><small>CSV or public dataset</small></div>
+        <div class="pipe"><i data-icon="layers"></i><b>Cleaning</b><small>gaps, duplicates, outliers</small></div>
+        <div class="pipe"><i data-icon="gauge"></i><b>Robust baseline</b><small>median + MAD per hour</small></div>
+        <div class="pipe"><i data-icon="cpu"></i><b>Isolation Forest</b><small>8 features, 200 trees</small></div>
+        <div class="pipe"><i data-icon="workflow"></i><b>Event rules</b><small>spike · sustained · repeated</small></div>
+        <div class="pipe hl"><i data-icon="sparkles"></i><b>Insight</b><small>explanations, ₹ savings</small></div>
+      </div>
+      <div class="tech-grid">
+        <div class="tech reveal"><i data-icon="globe"></i><h3>Public electricity datasets</h3><p>Built and tested on the UCI Individual Household Electric Power Consumption dataset (CC BY 4.0).</p></div>
+        <div class="tech reveal" style="--d:.06s"><i data-icon="gauge"></i><h3>Statistical analysis</h3><p>Same-hour medians over 28 days, weekday-aware, with robust z-scores that ignore past outliers.</p></div>
+        <div class="tech reveal" style="--d:.12s"><i data-icon="cpu"></i><h3>Machine learning</h3><p>scikit-learn Isolation Forest ranks how rare each hour is, combined with transparent rules.</p></div>
+        <div class="tech reveal" style="--d:.18s"><i data-icon="chart"></i><h3>Interactive analytics</h3><p>Zoomable charts over tens of thousands of hourly points, heatmaps and drill-down alerts.</p></div>
+        <div class="tech reveal" style="--d:.24s"><i data-icon="shield"></i><h3>Explainable recommendations</h3><p>Every number traces back to a reading, a baseline and a rule. No black boxes.</p></div>
+      </div>
+      <div class="stack-chips reveal"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>FastAPI</span><span>Apache ECharts</span><span>Vanilla JS</span></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div class="reveal">
+        <span class="kicker">About</span>
+        <h2 id="about-h">Built to make household energy legible</h2>
+        <p>Most homes only see one number: the monthly bill. PowerPulse looks at every hour, learns what normal means for that specific home, and points out the moments that cost money, with an explanation you can check.</p>
+        <p>It was built as a Tech Fest project for household energy anomaly detection. It runs entirely on your machine, keeps analyses in memory only, and is validated against labelled synthetic anomalies so its accuracy is measured, not claimed.</p>
+        <a class="btn dark lg" href="/login?next=%2Fdashboard%23lab">Open the Validation Lab <i data-icon="flask"></i></a>
+      </div>
+      <ul class="about-list reveal" style="--d:.1s">
+        <li><span><i data-icon="target"></i></span><div><b>Measured accuracy</b><p>Inject spikes, sustained increases and repeated loads, then see exactly what was caught.</p></div></li>
+        <li><span><i data-icon="shield"></i></span><div><b>Private by default</b><p>No accounts, no database. Results disappear when the server stops.</p></div></li>
+        <li><span><i data-icon="rupee"></i></span><div><b>Made for Indian tariffs</b><p>Slab-based pricing in INR, editable to match your DISCOM.</p></div></li>
+        <li><span><i data-icon="users"></i></span><div><b>Honest about limits</b><p>Detects increases only; needs 14+ days of hourly data. Estimates are labelled as estimates.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-sec">
+    <div class="wrap">
+      <div class="cta reveal">
+        <svg class="cta-wave" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 H180 L205 70 L222 30 L246 108 L264 14 L288 92 L304 70 H600"/></svg>
+        <h2>Your Energy Data Has a Story. Let's Understand It.</h2>
+        <p>Open the dashboard with four years of real household data already loaded, or bring your own meter export.</p>
+        <a class="btn lg cta-btn" href="/register" data-cta>Launch PowerPulse <i data-icon="zap"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#home"><span data-logo></span><span class="wordmark">Power<span>Pulse</span></span></a>
+      <p>Smart energy intelligence for households: anomaly detection, explainable alerts and savings from the meter data you already have.</p>
+      <p class="tagline">Understand Energy. Detect Anomalies. Power Smarter.</p>
+    </div>
+    <div><h4>Product</h4><a href="#features">Features</a><a href="#how">How It Works</a><a href="#technology">Technology</a><a href="#about">About</a></div>
+    <div><h4>Dashboard</h4><a href="/login?next=%2Fdashboard%23overview">Overview</a><a href="/login?next=%2Fdashboard%23anomalies">Anomaly Detection</a><a href="/login?next=%2Fdashboard%23savings">Savings &amp; Cost</a><a href="/login?next=%2Fdashboard%23lab">Validation Lab</a></div>
+    <div><h4>Project</h4><a href="/login?next=%2Fdashboard%23data">Data Sources</a><a href="https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption" target="_blank" rel="noopener">UCI dataset ↗</a><span>A Tech Fest project</span></div>
+  </div>
+  <div class="wrap foot-bottom"><span>© 2026 PowerPulse. All rights reserved.</span><span>Data: Hebrail &amp; Berard, UCI ML Repository, CC BY 4.0</span></div>
+</footer>
+
+<script type="module" src="js/landing.js"></script>
+</body>
+</html>

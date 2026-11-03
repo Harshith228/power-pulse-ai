@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · PowerPulse</title>
+  <meta name="description" content="PowerPulse dashboard: household energy analytics, explainable anomaly detection and savings.">
+  <meta name="theme-color" content="#0a1324">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/features.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script src="vendor/echarts.min.js"></script>
+</head>
+<body class="dash">
+<a class="skip" href="#views">Skip to content</a>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sb-head">
+      <a class="brand" href="/" aria-label="PowerPulse home" data-tip="PowerPulse home" data-tip-when="collapsed"><span id="brand-logo"></span><span class="wordmark sb-text">Power<span>Pulse</span></span></a>
+      <button class="icon-btn sb-close" id="sb-close" aria-label="Close menu"><i data-icon="x"></i></button>
+    </div>
+    <nav id="nav" aria-label="Main">
+      <div class="nav-main">
+      <a href="#overview" data-view="overview" data-tip="Overview" data-tip-when="collapsed"><i data-icon="dashboard"></i><span class="sb-text">Overview</span></a>
+      <div class="nav-section" data-section="electricity">
+        <button type="button" class="nav-parent" id="np-electricity" aria-expanded="false" aria-controls="sub-electricity" data-tip="Electricity" data-tip-when="collapsed">
+          <i data-icon="zap"></i><span class="sb-text">Electricity</span><i data-icon="chevronDown" class="chev sb-text"></i></button>
+        <div class="nav-sub" id="sub-electricity" role="group" aria-labelledby="np-electricity"><div class="nav-sub-in">
+          <a href="#electricity/analytics" data-view="electricity/analytics"><i data-icon="chart"></i><span>Consumption Analytics</span></a>
+          <a href="#electricity/anomalies" data-view="electricity/anomalies"><i data-icon="scan"></i><span>Anomaly Detection</span><em class="nav-count" id="nav-count"></em></a>
+          <a href="#electricity/alerts" data-view="electricity/alerts"><i data-icon="bellRing"></i><span>Alerts</span></a>
+          <a href="#electricity/limit" data-view="electricity/limit"><i data-icon="gauge"></i><span>Daily Consumption Limit</span></a>
+          <a href="#electricity/savings" data-view="electricity/savings"><i data-icon="piggy"></i><span>Savings &amp; Cost</span></a>
+          <a href="#electricity/reports" data-view="electricity/reports"><i data-icon="file"></i><span>Electricity Reports</span></a>
+        </div></div>
+      </div>
+      <div class="nav-section" data-section="water">
+        <button type="button" class="nav-parent" id="np-water" aria-expanded="false" aria-controls="sub-water" data-tip="Water" data-tip-when="collapsed">
+          <i data-icon="droplet"></i><span class="sb-text">Water</span><i data-icon="chevronDown" class="chev sb-text"></i></button>
+        <div class="nav-sub" id="sub-water" role="group" aria-labelledby="np-water"><div class="nav-sub-in">
+          <a href="#water/analytics" data-view="water/analytics"><i data-icon="chart"></i><span>Water Usage Analytics</span></a>
+          <a href="#water/anomalies" data-view="water/anomalies"><i data-icon="scan"></i><span>Anomaly Detection</span><em class="nav-count" id="nav-count-water"></em></a>
+          <a href="#water/alerts" data-view="water/alerts"><i data-icon="bellRing"></i><span>Alerts</span></a>
+          <a href="#water/limit" data-view="water/limit"><i data-icon="gauge"></i><span>Daily Consumption Limit</span></a>
+          <a href="#water/savings" data-view="water/savings"><i data-icon="piggy"></i><span>Savings &amp; Cost</span></a>
+          <a href="#water/reports" data-view="water/reports"><i data-icon="file"></i><span>Water Reports</span></a>
+        </div></div>
+      </div>
+      </div>
+      <div class="nav-bottom">
+      <a href="#reports" data-view="reports" data-tip="Monthly Reports" data-tip-when="collapsed"><i data-icon="file"></i><span class="sb-text">Monthly Reports</span></a>
+      <a href="#notifications" data-view="notifications" data-tip="Notifications" data-tip-when="collapsed"><i data-icon="bell"></i><span class="sb-text">Notifications</span><em class="nav-count blue" id="nav-unread"></em></a>
+      <a href="#settings" data-view="settings" data-tip="Settings" data-tip-when="collapsed"><i data-icon="settings"></i><span class="sb-text">Settings</span></a>
+      </div>
+    </nav>
+    <div class="sb-foot">
+      <button class="sb-toggle" id="sb-toggle" aria-controls="sidebar" aria-expanded="true" data-tip="Expand sidebar  [" data-tip-when="collapsed">
+        <span class="tog-ic"></span><span class="sb-text">Collapse sidebar</span><kbd class="sb-text">[</kbd>
+      </button>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay" hidden></div>
+
+  <main id="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menu" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><i data-icon="menu"></i></button>
+      <div class="titles">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">PowerPulse</a><i data-icon="chevronRight"></i><span id="crumb-group">Analytics</span><i data-icon="chevronRight"></i><span id="crumb-page" aria-current="page">Overview</span></nav>
+        <h1 id="view-title">Overview</h1>
+        <div class="ds-line" id="ds-line"><span class="ds-dot"></span><span>Loading dataset…</span></div>
+      </div>
+      <div class="actions">
+        <div class="dropdown" data-dd id="date-dd">
+          <button class="btn date-btn" data-dd-toggle aria-haspopup="true" aria-expanded="false"><i data-icon="calendar"></i><span id="date-label">Last 30 days</span><i data-icon="chevronDown" class="chev"></i></button>
+          <div class="menu-pop date-pop" id="date-pop"></div>
+        </div>
+        <div class="dropdown" data-dd id="report-dd">
+          <button class="btn" id="report-btn" data-dd-toggle aria-haspopup="true" aria-expanded="false" disabled><i data-icon="download"></i><span class="hide-sm">Report</span></button>
+          <div class="menu-pop" role="menu">
+            <div class="pop-title">Download</div>
+            <a id="dl-html" role="menuitem" target="_blank" rel="noopener" data-dd-close><i data-icon="file"></i><span><b>Full report</b><small>Printable HTML / PDF</small></span></a>
+            <a id="dl-csv" role="menuitem" data-dd-close><i data-icon="table"></i><span><b>Anomalies</b><small>CSV, one row per alert</small></span></a>
+            <a id="dl-data" role="menuitem" data-dd-close><i data-icon="database"></i><span><b>Cleaned hourly data</b><small>CSV, re-uploadable</small></span></a>
+          </div>
+        </div>
+        <div class="dropdown" data-dd id="theme-dd">
+          <button class="icon-btn" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme" data-tip="Theme" data-tip-side="bottom" id="theme-btn"><i data-icon="sun"></i></button>
+          <div class="menu-pop theme-pop" role="menu" id="theme-pop"></div>
+        </div>
+        <div class="dropdown" data-dd id="notif-dd">
+          <button class="icon-btn" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="Notifications" data-tip="Notifications" data-tip-side="bottom"><i data-icon="bell"></i><span class="badge" id="notif-badge" hidden></span></button>
+          <div class="menu-pop notif-pop" id="notif-pop"></div>
+        </div>
+        <button class="btn primary" id="new-analysis"><i data-icon="plus"></i><span class="hide-sm">New analysis</span></button>
+        <div class="dropdown" data-dd id="user-dd">
+          <button class="avatar-btn" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="Account menu"><span class="avatar" id="avatar">·</span></button>
+          <div class="menu-pop user-pop" role="menu">
+            <div class="user-head"><b id="user-name"></b><span id="user-email"></span></div>
+            <a role="menuitem" href="#settings" data-settings-tab="account" data-dd-close><i data-icon="user"></i><span><b>Profile &amp; account</b><small>Name, email, password</small></span></a>
+            <a role="menuitem" href="#settings" data-settings-tab="notifications" data-dd-close><i data-icon="bell"></i><span><b>Notification preferences</b><small>In-app alerts and reports</small></span></a>
+            <a role="menuitem" href="#settings" data-settings-tab="data" data-dd-close><i data-icon="database"></i><span><b>Data &amp; datasets</b><small>Uploads, UCI dataset, water records</small></span></a>
+            <a role="menuitem" id="logout" data-dd-close><i data-icon="logOut"></i><span><b>Sign out</b></span></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="views"></div>
+    <footer class="dash-foot">PowerPulse · Smart Energy &amp; Water Intelligence · Electricity sample data: UCI ML Repository (CC BY 4.0)</footer>
+  </main>
+</div>
+
+<div class="loading" id="loading" hidden>
+  <div class="loading-card">
+    <div class="pulse-loader" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <p id="loading-text">Analysing consumption…</p>
+    <small>Building baseline · scoring with Isolation Forest · grouping events</small>
+  </div>
+</div>
+<input type="file" id="quick-file" accept=".csv,.txt" hidden>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

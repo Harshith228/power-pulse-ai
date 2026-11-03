@@ -1,0 +1,54 @@
+/* Dark-theme adjustments the shared tokens can't express (navy accents that would vanish on dark surfaces, etc.).
+   Loaded by every page; all rules are scoped to [data-theme="dark"]. */
+[data-theme="dark"] body { background: var(--bg); }
+
+/* sidebar stays navy but separates from the dark page */
+[data-theme="dark"] .sidebar { background: radial-gradient(120% 60% at 0% 0%, rgba(59, 130, 246, .14), transparent 60%), #08101f; border-right-color: var(--border); }
+
+/* selected states that used navy-900 need a visible colour on dark cards */
+[data-theme="dark"] .seg button.on,
+[data-theme="dark"] .util-tabs button[aria-selected="true"] { background: var(--primary); color: #fff; }
+[data-theme="dark"] .btn.dark { background: var(--surface-3); border-color: var(--border-strong); }
+[data-theme="dark"] .btn.dark:hover { background: var(--border-strong); }
+[data-theme="dark"] .btn.primary { color: #fff; }
+
+/* the accent KPI keeps its gradient but needs an edge on a dark page */
+[data-theme="dark"] .kpi.accent { background: linear-gradient(140deg, #13284d 0%, #173a6b 60%, #0e4a6b 100%); border-color: rgba(96, 165, 250, .25); }
+
+/* tooltips, toasts and flyouts: lift them off the background */
+[data-theme="dark"] .tip,
+[data-theme="dark"] .toast { background: #1f2d49; border: 1px solid var(--border-strong); }
+[data-theme="dark"] .menu-pop, [data-theme="dark"] .modal { border: 1px solid var(--border-strong); }
+[data-theme="dark"] .modal-wrap { background: rgba(2, 6, 14, .7); }
+
+/* code, pre and keys */
+[data-theme="dark"] code { background: var(--surface-3); color: var(--ink); }
+[data-theme="dark"] pre { background: #0b1426; }
+[data-theme="dark"] kbd { background: var(--surface-3); border-color: var(--border-strong); color: var(--ink); }
+
+/* form controls: native widgets follow color-scheme; keep borders visible */
+[data-theme="dark"] input, [data-theme="dark"] select { background: #0d1729; border-color: var(--border-strong); color: var(--ink); }
+[data-theme="dark"] input::placeholder { color: #6f7f99; }
+[data-theme="dark"] .switch { background: var(--border-strong); }
+[data-theme="dark"] .switch span { background: #e8eef8; }
+[data-theme="dark"] .drop { background: var(--surface-2); }
+[data-theme="dark"] .drop .ic { background: var(--surface-3); }
+
+/* tables and status */
+[data-theme="dark"] th { background: var(--surface-2); }
+[data-theme="dark"] tbody tr.sel { background: rgba(59, 130, 246, .14); }
+[data-theme="dark"] .badge { border-color: var(--bg); }
+[data-theme="dark"] .lb-mark.full { background: #e8eef8; }
+[data-theme="dark"] .loading-card { border-color: var(--border-strong); }
+
+/* landing page sections (hero, nav and footer are always dark) */
+[data-theme="dark"] .landing .section.alt { background: #0d1628; border-color: var(--border); }
+[data-theme="dark"] .landing .stats-grid { border-color: var(--border); }
+[data-theme="dark"] .landing .stat b { background: linear-gradient(90deg, #60a5fa, #22d3ee); -webkit-background-clip: text; background-clip: text; }
+[data-theme="dark"] .landing .kicker { background: rgba(59, 130, 246, .15); color: #93c5fd; }
+[data-theme="dark"] .landing .about-list li { border-color: var(--border); }
+[data-theme="dark"] .landing .footer { background: #050a14; }
+
+/* sign-in card */
+[data-theme="dark"] .auth-card { border: 1px solid var(--border-strong); }
+[data-theme="dark"] .auth .inp input { background: #0d1729; }

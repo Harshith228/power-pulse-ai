@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · PowerPulse</title>
+  <meta name="description" content="Sign in to PowerPulse, the smart energy and water intelligence platform.">
+  <meta name="theme-color" content="#0a1324">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+</head>
+<body class="auth">
+<div class="auth-bg" aria-hidden="true"><div class="glow g1"></div><div class="glow g2"></div><div class="grid-bg"></div>
+  <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none"><path class="wave-pulse" d="M0 200 H360 L400 200 L430 120 L470 280 L500 60 L540 240 L570 200 H820 L850 200 L870 160 L895 240 L915 200 H1440"/></svg>
+</div>
+<div class="auth-wrap">
+  <aside class="auth-side">
+    <a class="brand" href="/" aria-label="PowerPulse home"><span data-logo></span><span class="wordmark">Power<span>Pulse</span></span></a>
+    <div class="side-copy">
+      <h2>Understand Energy. Detect Anomalies. Power Smarter.</h2>
+      <p>Electricity and water in one place: daily limits, explained alerts, monthly reports and in-app notifications.</p>
+      <ul>
+        <li><i data-icon="scan"></i>Explainable anomaly detection</li>
+        <li><i data-icon="gauge"></i>Daily limits for electricity &amp; water</li>
+        <li><i data-icon="bellRing"></i>Alerts in-app and in your notification centre</li>
+        <li><i data-icon="shield"></i>Your data stays private to your account</li>
+      </ul>
+    </div>
+    <p class="side-foot">© 2026 PowerPulse</p>
+  </aside>
+
+  <main class="auth-main" id="main">
+    <a class="brand mobile-brand" href="/" aria-label="PowerPulse home"><span data-logo></span><span class="wordmark">Power<span>Pulse</span></span></a>
+    <div class="auth-card" id="card" aria-live="polite"></div>
+    <p class="auth-legal">By continuing you agree to use PowerPulse for monitoring your own household. <a href="/">Back to home</a></p>
+  </main>
+</div>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

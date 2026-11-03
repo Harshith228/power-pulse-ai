@@ -1,0 +1,135 @@
+/* Expandable sidebar sections (Electricity / Water), collapsed-mode flyouts, theme menu, and small v4 components. */
+
+/* ---- top-level items and section parents share one look ---- */
+#nav { gap: 2px; }
+.nav-parent {
+  position: relative; display: flex; align-items: center; gap: 12px; width: 100%; height: 42px; padding: 0 12px; border: 0; border-radius: 10px;
+  background: transparent; color: #aeb9cc; font: inherit; font-weight: 500; font-size: 13.5px; cursor: pointer; text-align: left;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.nav-parent svg.i { width: 19px; height: 19px; }
+.nav-parent:hover { background: rgba(255, 255, 255, .05); color: #fff; }
+.nav-parent:focus-visible { outline: 2px solid var(--cyan-400); outline-offset: -2px; }
+.nav-parent .chev { margin-left: auto; width: 16px; height: 16px; opacity: .7; transition: transform var(--t) var(--ease); }
+.nav-section.open > .nav-parent .chev { transform: rotate(180deg); }
+.nav-section.has-active > .nav-parent { color: #fff; }
+.nav-section.has-active > .nav-parent > svg.i:first-child { color: var(--cyan-400); }
+.nav-section.has-active:not(.open) > .nav-parent { background: linear-gradient(90deg, rgba(37, 99, 235, .22), rgba(37, 99, 235, .06)); }
+
+/* smooth height animation without measuring: grid row 0fr -> 1fr */
+.nav-sub { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-slow) var(--ease); }
+.nav-section.open > .nav-sub { grid-template-rows: 1fr; }
+.nav-sub-in { overflow: hidden; min-height: 0; display: flex; flex-direction: column; gap: 1px; padding-left: 21px; position: relative; }
+.nav-sub-in::before { content: ""; position: absolute; left: 21px; top: 4px; bottom: 6px; width: 1px; background: rgba(255, 255, 255, .1); }
+#nav .nav-sub a { height: 36px; padding: 0 10px 0 16px; font-size: 13px; gap: 10px; color: #98a6bd; margin-left: 0; }
+#nav .nav-sub a svg.i { width: 16px; height: 16px; }
+#nav .nav-sub a:hover { color: #fff; }
+#nav .nav-sub a.active { background: rgba(37, 99, 235, .22); color: #fff; }
+#nav .nav-sub a.active::before { left: -1px; top: 9px; bottom: 9px; }
+.nav-sub a { visibility: hidden; transition: visibility 0s linear var(--t-slow); }
+.nav-section.open .nav-sub a { visibility: visible; transition: visibility 0s; }
+
+/* collapsed desktop sidebar: sections become icon buttons that open a flyout */
+@media (min-width: 901px) {
+  body.sb-collapsed .nav-parent { padding: 0 14px; gap: 0; }
+  body.sb-collapsed .nav-sub { display: none; }
+  body.sb-collapsed .nav-section.has-active > .nav-parent { background: linear-gradient(90deg, rgba(37, 99, 235, .28), rgba(37, 99, 235, .10)); }
+  body.sb-collapsed .nav-section.has-active > .nav-parent::before { content: ""; position: absolute; left: -6px; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--cyan-400); }
+}
+.nav-flyout {
+  position: fixed; z-index: 85; min-width: 240px; padding: 6px; border-radius: 14px; background: var(--navy-800); border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .45); animation: fly-in .18s var(--ease);
+}
+@keyframes fly-in { from { opacity: 0; transform: translateX(-6px); } }
+.nf-title { font-size: 10.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #6b7a93; padding: 8px 10px 6px; }
+.nav-flyout a { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 10px; border-radius: 9px; color: #c3cde0; font-size: 13.5px; font-weight: 500; }
+.nav-flyout a svg.i { width: 16px; height: 16px; }
+.nav-flyout a:hover, .nav-flyout a:focus-visible { background: rgba(255, 255, 255, .07); color: #fff; outline: none; }
+.nav-flyout a.active { background: rgba(37, 99, 235, .28); color: #fff; }
+
+/* ---- theme menu & cards ---- */
+.theme-pop { width: 270px; }
+.theme-pop a { display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 10px; color: var(--ink); cursor: pointer; }
+.theme-pop a > svg.i:first-child { width: 18px; height: 18px; color: var(--primary); }
+.theme-pop a span { display: flex; flex-direction: column; line-height: 1.3; flex: 1; }
+.theme-pop a small { color: var(--muted); font-size: 12px; }
+.theme-pop a > svg.i:last-child { width: 16px; height: 16px; color: var(--primary); }
+.theme-pop a:hover, .theme-pop a:focus-visible, .theme-pop a.on { background: var(--surface-3); outline: none; }
+.theme-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.theme-card { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1.5px solid var(--border); border-radius: 14px; background: var(--surface); cursor: pointer; text-align: left; color: var(--ink); transition: border-color var(--t-fast), box-shadow var(--t-fast); }
+.theme-card:hover { border-color: var(--border-strong); }
+.theme-card[aria-checked="true"] { border-color: var(--primary); box-shadow: var(--ring); }
+.theme-card:focus-visible { outline: none; box-shadow: var(--ring); }
+.tc-preview { height: 72px; border-radius: 9px; display: grid; grid-template-columns: 22% 1fr; grid-template-rows: 1fr 1fr; gap: 5px; padding: 6px; border: 1px solid var(--border); }
+.tc-preview i:first-child { grid-row: 1 / -1; border-radius: 5px; background: #0a1324; }
+.tc-preview i { border-radius: 5px; }
+.theme-card.light .tc-preview { background: #f5f7fb; } .theme-card.light .tc-preview i:not(:first-child) { background: #fff; border: 1px solid #e3e8f0; }
+.theme-card.dark .tc-preview { background: #0a1120; } .theme-card.dark .tc-preview i:not(:first-child) { background: #15213a; }
+.theme-card.system .tc-preview { background: linear-gradient(110deg, #f5f7fb 50%, #0a1120 50%); }
+.theme-card.system .tc-preview i:not(:first-child) { background: linear-gradient(110deg, #fff 50%, #15213a 50%); }
+.tc-label { display: flex; align-items: center; gap: 8px; }
+.tc-label svg.i { width: 16px; height: 16px; color: var(--primary); }
+.tc-check { margin-left: auto; }
+.theme-card small { color: var(--muted); font-size: 12px; }
+
+.alert-box code { word-break: break-all; }
+
+/* ---- misc ---- */
+.source-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); margin: -4px 0 14px; }
+.source-line > svg.i { width: 15px; height: 15px; color: var(--muted); }
+.source-line .link { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; }
+.source-line .link svg.i { width: 13px; height: 13px; }
+.alert-prefs { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.alert-prefs li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13.5px; flex-wrap: wrap; }
+.dl-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.rc-ic.water { background: var(--cyan-50); color: var(--cyan); }
+a.alert { color: var(--ink); }
+@media (max-width: 640px) { .theme-cards { grid-template-columns: minmax(0, 1fr); } .source-line .link { margin-left: 0; } }
+
+/* keep sub-item labels on one line; long ones truncate */
+#nav .nav-sub a span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; }
+#nav .nav-sub a .nav-count { flex: none; }
+
+/* ---- sidebar layout: logo / main navigation (scrolls only when needed) / bottom navigation / footer ---- */
+#nav { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 0; overflow: visible; margin: 0; padding: 0; }
+.nav-main { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; overflow-x: hidden;
+  margin: 0 -6px; padding: 0 6px 8px; scrollbar-width: thin; scrollbar-color: var(--navy-600) transparent; overscroll-behavior: contain; }
+.nav-bottom { flex: none; display: flex; flex-direction: column; gap: 2px; margin: 0 -6px; padding: 10px 6px 0; border-top: 1px solid rgba(255, 255, 255, .07); }
+/* nav rows keep their full height; the list scrolls instead of squeezing them */
+#nav a, .nav-parent, .nav-section { flex-shrink: 0; }
+#nav > .nav-main > a, #nav > .nav-bottom > a { min-height: 42px; }
+#nav a > span.sb-text { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.sb-foot { flex: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .07); }
+@media (max-width: 900px) {
+  /* mobile drawer: one natural scroll for the whole drawer */
+  .sidebar { overflow-y: auto; overscroll-behavior: contain; }
+  #nav { flex: none; }
+  .nav-main { overflow: visible; flex: none; }
+  .sb-foot { display: none; }
+}
+
+/* phones: the title gets its own full-width row under the menu + actions, so a long page name never runs under the buttons */
+@media (max-width: 600px) {
+  .topbar { flex-wrap: wrap; row-gap: 8px; }
+  .topbar .actions { margin-left: auto; gap: 6px; }
+  .topbar .titles { order: 3; flex: 1 1 100%; }
+  .titles h1 { font-size: 20px; line-height: 1.2; overflow-wrap: anywhere; }
+}
+
+/* unread-anomaly badges: pop in, bump on change, fade out at zero */
+.nav-count { transition: opacity .2s var(--ease), transform .2s var(--ease); }
+.nav-count.out { opacity: 0; transform: scale(.4); }
+.nav-count.bump { animation: badge-pop .45s var(--ease); }
+
+/* ---- one scrolling architecture: the page (window) scrolls; the sidebar and header stay put ----
+   Boxes that scroll on their own are positioned, so absolutely-positioned content inside them (e.g. .sr-only
+   labels in a table row) is clipped by the box instead of stretching the whole page's scroll height. */
+.table-wrap, .scroll-x, .imp-table, .modal-b, .notif-list, .set-body { position: relative; }
+/* the anomaly list scrolls with the page (it is paged with "Show more"), not inside a second scroll box */
+.split .table-wrap { max-height: none; }
+/* the detail panel stays in view beside the list; when it is taller than the screen it scrolls on its own,
+   without passing the scroll on to the page */
+.detail { max-height: calc(100vh - var(--top-h) - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+@media (max-width: 1100px) { .detail { max-height: none; overflow: visible; } }
+/* anything scrolled to (anchors, scrollIntoView) clears the sticky header */
+.view [id], .view .card { scroll-margin-top: calc(var(--top-h) + 12px); }

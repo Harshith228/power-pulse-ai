@@ -1,0 +1,37 @@
+# Secrets - never commit real credentials (see .env.example)
+.env
+.env.*
+!.env.example
+
+# Local data: user accounts, uploads and caches
+data/powerpulse.db
+data/powerpulse.db-*
+data/cache/
+data/raw/
+
+# Python / tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Backups made by tooling
+_backup/
+
+e2e/output/
+
+# Databases, logs and OS/editor clutter (the app creates its database on first run)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite3
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+node_modules/

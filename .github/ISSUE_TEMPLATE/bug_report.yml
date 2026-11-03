@@ -1,0 +1,39 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for the report. Please don't include passwords, tokens or real household data. Security issues: see SECURITY.md instead."
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Go to Water > Water Usage Analytics\n2. Click Add Water CSV\n3. ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Electricity, Water, Anomaly detection, Limits and alerts, Notifications, Monthly reports, Account / sign-in, Settings, Themes / layout, Other]
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Browser + version, OS, screen width, theme"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error reference or logs
+      description: The "quote reference" code shown in the app, or relevant server log lines (remove personal data).
+      render: text
